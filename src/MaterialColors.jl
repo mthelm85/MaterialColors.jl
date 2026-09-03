@@ -29,7 +29,7 @@ export HCT, hct, to_hex
 export TonalPalette, tonal_palette, tone_at, precompute!
 
 # Schemes
-export color_scheme, color_scheme_pair
+export color_scheme, color_scheme_pair, hex_scheme, hex_scheme_pair
 
 # Contrast
 export contrast_ratio, meets_aa, meets_aaa, lighter_tone, darker_tone

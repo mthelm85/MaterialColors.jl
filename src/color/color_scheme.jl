@@ -126,7 +126,7 @@ dark_scheme = color_scheme("#6750A4"; dark=true)
 dark_scheme[:primary]       # "#D0BCFF" (lighter for dark backgrounds)
 ```
 """
-function color_scheme(seed::AbstractString;
+function hex_scheme(seed::AbstractString;
                       dark::Bool = false,
                       secondary::Union{AbstractString,ColorTypes.Colorant,Nothing} = nothing,
                       tertiary::Union{AbstractString,ColorTypes.Colorant,Nothing} = nothing,
@@ -178,11 +178,45 @@ end
 Generate both light and dark color schemes in one call.
 Returns a tuple of `(light_scheme, dark_scheme)`.
 """
-function color_scheme_pair(seed::AbstractString;
+function hex_scheme_pair(seed::AbstractString;
                            secondary::Union{AbstractString,ColorTypes.Colorant,Nothing} = nothing,
                            tertiary::Union{AbstractString,ColorTypes.Colorant,Nothing} = nothing,
                            contrast::Symbol = :standard)
-    light = color_scheme(seed; dark=false, secondary, tertiary, contrast)
-    dark  = color_scheme(seed; dark=true,  secondary, tertiary, contrast)
+    light = hex_scheme(seed; dark=false, secondary, tertiary, contrast)
+    dark  = hex_scheme(seed; dark=true,  secondary, tertiary, contrast)
     (light, dark)
+end
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Colorant-returning schemes
+# ─────────────────────────────────────────────────────────────────────────────
+# The generator works in hex because that is what the MD3 reference produces
+# and what the tests pin against. These are the Julia-facing forms: same roles,
+# same colours, handed back as Colorants so they compose with the ecosystem.
+
+"""Parse a `#RRGGBB` string into an RGB value on the 8-bit grid."""
+function _rgb_from_hex(hex::AbstractString)::ColorTypes.RGB{Float64}
+    r, g, b = _parse_hex(hex)
+    ColorTypes.RGB{Float64}(r / 255, g / 255, b / 255)
+end
+
+_as_rgb_scheme(d::Dict{Symbol,String}) =
+    Dict{Symbol,ColorTypes.RGB{Float64}}(k => _rgb_from_hex(v) for (k, v) in d)
+
+"""
+    color_scheme(seed; dark=false, secondary=nothing, tertiary=nothing)
+
+Generate the 34 MD3 colour roles from `seed`, as `RGB{Float64}` values.
+Use [`hex_scheme`](@ref) when you need CSS hex strings instead.
+"""
+color_scheme(seed::AbstractString; kwargs...) = _as_rgb_scheme(hex_scheme(seed; kwargs...))
+
+"""
+    color_scheme_pair(seed; secondary=nothing, tertiary=nothing)
+
+The light and dark schemes for one seed, as `RGB{Float64}` values.
+"""
+function color_scheme_pair(seed::AbstractString; kwargs...)
+    light, dark = hex_scheme_pair(seed; kwargs...)
+    (_as_rgb_scheme(light), _as_rgb_scheme(dark))
 end

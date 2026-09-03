@@ -146,7 +146,7 @@ end
 
 @testset "color_scheme basics" begin
     scheme = color_scheme("#6750A4")
-    @test scheme isa Dict{Symbol,String}
+    @test scheme isa Dict{Symbol,RGB{Float64}}
 
     # All 34 expected roles present
     expected_roles = [
@@ -165,11 +165,31 @@ end
         @test haskey(scheme, role) || "Missing role: $role"
     end
 
-    # All values are valid hex strings
-    for (role, hex) in scheme
-        @test startswith(hex, "#")
-        @test length(hex) == 7
+    # Values are colours, not strings
+    for (role, c) in scheme
+        @test c isa RGB{Float64}
     end
+end
+
+@testset "MC-20 hex_scheme" begin
+    hexes = hex_scheme("#6750A4")
+    @test hexes isa Dict{Symbol,String}
+
+    # Same roles as color_scheme, same colours, formatted as CSS hex
+    scheme = color_scheme("#6750A4")
+    @test keys(hexes) == keys(scheme)
+    for (role, c) in scheme
+        @test hexes[role] == to_hex(c)
+        @test startswith(hexes[role], "#")
+        @test length(hexes[role]) == 7
+        @test hexes[role] == uppercase(hexes[role])
+    end
+
+    # Dark variant and the paired form
+    @test hex_scheme("#6750A4"; dark = true)[:surface] != hexes[:surface]
+    lh, dh = hex_scheme_pair("#6750A4")
+    @test lh == hexes
+    @test dh == hex_scheme("#6750A4"; dark = true)
 end
 
 @testset "color_scheme light vs dark" begin

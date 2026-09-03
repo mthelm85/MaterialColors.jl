@@ -13,6 +13,8 @@ tonal_palette(seed::ColorTypes.Colorant)::TonalPalette = tonal_palette(to_hex(se
 # ── Schemes ──
 color_scheme(seed::ColorTypes.Colorant; kwargs...) = color_scheme(to_hex(seed); kwargs...)
 color_scheme_pair(seed::ColorTypes.Colorant; kwargs...) = color_scheme_pair(to_hex(seed); kwargs...)
+hex_scheme(seed::ColorTypes.Colorant; kwargs...) = hex_scheme(to_hex(seed); kwargs...)
+hex_scheme_pair(seed::ColorTypes.Colorant; kwargs...) = hex_scheme_pair(to_hex(seed); kwargs...)
 
 # ── Contrast ──
 # Both arguments are normalised independently, so a Colorant may be compared
