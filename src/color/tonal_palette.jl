@@ -33,7 +33,7 @@ p[10]   # a much darker version
 mutable struct TonalPalette
     hue::Float64
     chroma::Float64
-    cache::Dict{Int,String}
+    cache::Dict{Int,HCT}
 end
 
 """
@@ -42,7 +42,7 @@ end
 Create a tonal palette from explicit hue and chroma values.
 """
 TonalPalette(hue::Real, chroma::Real) =
-    TonalPalette(Float64(hue), Float64(chroma), Dict{Int,String}())
+    TonalPalette(Float64(hue), Float64(chroma), Dict{Int,HCT}())
 
 """
     tonal_palette(seed_hex::AbstractString) → TonalPalette
@@ -53,7 +53,7 @@ from the seed using the HCT color space.
 # Examples
 ```julia
 p = tonal_palette("#6750A4")
-p[40]  # ≈ "#6750A4"
+p[40]  # HCT at tone 40; to_hex(p[40]) ≈ "#6750A4"
 p[90]  # light container color
 ```
 """
@@ -63,20 +63,24 @@ function tonal_palette(seed_hex::AbstractString)::TonalPalette
 end
 
 """
-    getindex(p::TonalPalette, tone::Int) → String
+    getindex(p::TonalPalette, tone::Int) → HCT
 
-Look up a hex color at the given tone (0–100). Results are cached.
+Look up the colour at the given tone (0–100). Results are cached.
+
+Returns an `HCT`, the continuous representation, carrying the palette's hue and
+chroma at exactly the requested tone. Gamut mapping happens on conversion — use
+`to_hex` or `convert(RGB, …)` for a displayable value.
 """
-function Base.getindex(p::TonalPalette, tone::Int)::String
+function Base.getindex(p::TonalPalette, tone::Int)::HCT
     get!(p.cache, tone) do
-        to_hex(HCT(p.hue, p.chroma, Float64(tone)))
+        HCT(p.hue, p.chroma, Float64(tone))
     end
 end
 
 """
-    tone_at(p::TonalPalette, tone::Int) → String
+    tone_at(p::TonalPalette, tone::Int) → HCT
 
-Alias for `p[tone]`. Returns the hex color at the given tone.
+Alias for `p[tone]`.
 """
 tone_at(p::TonalPalette, tone::Int) = p[tone]
 

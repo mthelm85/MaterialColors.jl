@@ -60,13 +60,15 @@ A [`TonalPalette`](@ref) is one hue and chroma sampled across the tone range:
 
 ```julia
 p = tonal_palette("#6750A4")
-tone_at(p, 40)   # the primary colour in a light scheme
-tone_at(p, 80)   # the primary colour in a dark scheme
-tone_at(p, 90)   # a light primary container
+tone_at(p, 40)           # HCT at tone 40 — primary in a light scheme
+to_hex(tone_at(p, 80))   # "#CFBCFF" — primary in a dark scheme
+p[90]                    # indexing is an alias for tone_at
 ```
 
-Tones are cached as requested; [`precompute!`](@ref) fills the standard MD3 tone
-stops in one pass.
+A palette returns `HCT` values, carrying its hue and chroma at exactly the tone
+you asked for; gamut mapping happens when you convert with `to_hex` or
+`convert(RGB, …)`. Tones are cached as requested, and [`precompute!`](@ref)
+fills the standard MD3 tone stops in one pass.
 
 ## Schemes
 

@@ -165,7 +165,7 @@ function hex_scheme(seed::AbstractString;
     for (role_name, (palette_sym, light_tone, dark_tone)) in pairs(ROLE_MAPPING)
         palette = palettes[palette_sym]
         tone = dark ? dark_tone : light_tone
-        result[role_name] = palette[tone]
+        result[role_name] = to_hex(palette[tone])
     end
 
     result

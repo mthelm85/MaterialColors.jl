@@ -101,9 +101,13 @@ end
     @test p.hue ≈ hct("#6750A4").hue
     @test p.chroma ≈ hct("#6750A4").chroma
 
-    # Tone 0 should be near-black, tone 100 near-white
-    @test p[0] == "#000000"
-    @test p[100] == "#FFFFFF"
+    # A palette yields colours, not strings — the continuous representation
+    @test p[40] isa HCT
+    @test p[40].tone == 40.0
+
+    # Tone 0 is near-black, tone 100 near-white
+    @test to_hex(p[0]) == "#000000"
+    @test to_hex(p[100]) == "#FFFFFF"
 
     # tone_at is an alias for getindex
     @test tone_at(p, 40) == p[40]
@@ -113,17 +117,17 @@ end
     p = tonal_palette("#6750A4")
     # Higher tones should produce lighter colors (higher L*)
     for (t1, t2) in [(10, 40), (40, 80), (80, 99)]
-        c1 = hct(p[t1])
-        c2 = hct(p[t2])
-        @test c2.tone > c1.tone
+        @test p[t2].tone > p[t1].tone
     end
 end
 
 @testset "TonalPalette caching" begin
     p = tonal_palette("#6750A4")
-    hex1 = p[40]
-    hex2 = p[40]
-    @test hex1 === hex2  # same object from cache
+    @test !haskey(p.cache, 40)
+    c = p[40]
+    @test haskey(p.cache, 40)      # computing a tone stores it
+    @test p[40] === c              # and the stored value is reused
+    @test p.cache isa Dict{Int,HCT}
 end
 
 @testset "TonalPalette precompute!" begin
