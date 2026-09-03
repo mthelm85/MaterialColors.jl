@@ -1,6 +1,9 @@
 name: Docs
 
 on:
+  # Allow rebuilding on demand — e.g. after changing this workflow, or to pick
+  # up a dependency change that touched none of the paths below.
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -8,6 +11,9 @@ on:
       - "docs/**"
       - "src/**"
       - "*.toml"
+      # Changes to this workflow must be able to trigger it, otherwise a fix
+      # to the workflow itself never runs.
+      - ".github/workflows/Docs.yml"
     tags: ["*"]
   pull_request:
     branches:
