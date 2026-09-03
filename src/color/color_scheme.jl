@@ -128,10 +128,12 @@ dark_scheme[:primary]       # "#D0BCFF" (lighter for dark backgrounds)
 """
 function color_scheme(seed::AbstractString;
                       dark::Bool = false,
-                      secondary::Union{AbstractString,Nothing} = nothing,
-                      tertiary::Union{AbstractString,Nothing} = nothing,
+                      secondary::Union{AbstractString,ColorTypes.Colorant,Nothing} = nothing,
+                      tertiary::Union{AbstractString,ColorTypes.Colorant,Nothing} = nothing,
                       contrast::Symbol = :standard)::Dict{Symbol,String}
     contrast === :standard || @warn "Only :standard contrast is currently implemented"
+    secondary = _as_hex(secondary)
+    tertiary = _as_hex(tertiary)
 
     # Parse seed and extract hue/chroma
     seed_hct = hct(seed)
@@ -177,8 +179,8 @@ Generate both light and dark color schemes in one call.
 Returns a tuple of `(light_scheme, dark_scheme)`.
 """
 function color_scheme_pair(seed::AbstractString;
-                           secondary::Union{AbstractString,Nothing} = nothing,
-                           tertiary::Union{AbstractString,Nothing} = nothing,
+                           secondary::Union{AbstractString,ColorTypes.Colorant,Nothing} = nothing,
+                           tertiary::Union{AbstractString,ColorTypes.Colorant,Nothing} = nothing,
                            contrast::Symbol = :standard)
     light = color_scheme(seed; dark=false, secondary, tertiary, contrast)
     dark  = color_scheme(seed; dark=true,  secondary, tertiary, contrast)

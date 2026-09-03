@@ -31,7 +31,7 @@ A color in the HCT (Hue, Chroma, Tone) perceptual color space.
 - `chroma::Float64`: 0–~113 (gamut-dependent max). Saturation intensity.
 - `tone::Float64`: 0 (black)–100 (white). Perceptual lightness (CIE L*).
 """
-struct HCT
+struct HCT <: ColorTypes.Color{Float64,3}
     hue::Float64
     chroma::Float64
     tone::Float64
@@ -741,6 +741,46 @@ function hct(hex::AbstractString)::HCT
     HCT(cam.hue, cam.chroma, tone)
 end
 
+"""Build an HCT value from an integer sRGB triple."""
+function _hct_from_srgb(r::Int, g::Int, b::Int)::HCT
+    cam = _cam16_from_srgb(r, g, b)
+    HCT(cam.hue, cam.chroma, _tone_from_srgb(r, g, b))
+end
+
+"""Quantise a Colorant to the 8-bit sRGB triple the solver works in."""
+function _srgb_bytes(c::ColorTypes.Colorant)::NTuple{3,Int}
+    rgb = convert(ColorTypes.RGB{Float64}, c)
+    q(x) = round(Int, clamp(Float64(x), 0.0, 1.0) * 255)
+    (q(ColorTypes.red(rgb)), q(ColorTypes.green(rgb)), q(ColorTypes.blue(rgb)))
+end
+
+"""
+    hct(c::Colorant) -> HCT
+
+Convert any colour from the ColorTypes ecosystem into HCT.
+"""
+hct(c::ColorTypes.Colorant)::HCT = _hct_from_srgb(_srgb_bytes(c)...)
+
+"""Normalise a colour argument to a hex string, passing `nothing` through."""
+_as_hex(s::AbstractString) = String(s)
+_as_hex(c::ColorTypes.Colorant) = to_hex(c)
+_as_hex(::Nothing) = nothing
+hct(c::HCT)::HCT = c
+
+# ── ColorTypes conversions ──
+# HCT carries continuous components; sRGB is the displayable representation,
+# so every conversion out of HCT lands on the 8-bit grid. That is not a
+# rounding compromise — the gamut solver terminates on an integer triple.
+# Covers every RGB flavour in the ecosystem, including packed ones such as
+# RGB24 — which is what Colors.hex reaches for when rendering a swatch.
+function Base.convert(::Type{C}, c::HCT) where {C<:ColorTypes.AbstractRGB}
+    r, g, b = _solve_to_srgb(c.hue, c.chroma, c.tone)
+    C(r / 255, g / 255, b / 255)
+end
+Base.convert(::Type{ColorTypes.RGB}, c::HCT) = convert(ColorTypes.RGB{Float64}, c)
+Base.convert(::Type{HCT}, c::ColorTypes.Colorant) = hct(c)
+Base.convert(::Type{HCT}, c::HCT) = c
+
 """
     HCT(hue, chroma, tone)
 
@@ -766,6 +806,13 @@ function to_hex(c::HCT)::String
     r, g, b = _solve_to_srgb(c.hue, c.chroma, c.tone)
     _to_hex_string(r, g, b)
 end
+
+"""
+    to_hex(c::Colorant) -> String
+
+Format any colour from the ColorTypes ecosystem as an uppercase `#RRGGBB`.
+"""
+to_hex(c::ColorTypes.Colorant)::String = _to_hex_string(_srgb_bytes(c)...)
 
 function Base.show(io::IO, c::HCT)
     print(io, "HCT(hue=", round(c.hue; digits=1),

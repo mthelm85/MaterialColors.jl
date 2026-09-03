@@ -10,6 +10,7 @@ Ported from Google's material-color-utilities (Apache-2.0). See NOTICE.
 module MaterialColors
 
 using StaticArrays
+using ColorTypes
 
 # ─────────────────────────────────────────────────────────────────────────────
 # Colour engine
@@ -19,6 +20,7 @@ include("color/hct.jl")
 include("color/tonal_palette.jl")
 include("color/color_scheme.jl")
 include("color/contrast.jl")
+include("color/colorants.jl")
 
 # Colour space
 export HCT, hct, to_hex

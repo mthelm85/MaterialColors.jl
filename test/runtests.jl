@@ -1,5 +1,7 @@
 using MaterialColors
 using Test
+using ColorTypes
+using Colors
 
 @testset "MaterialColors.jl" begin
 
@@ -269,6 +271,84 @@ end
             @test r >= 3.0 || "$name $bg_role/$fg_role contrast $r < 3.0"
         end
     end
+end
+
+# ─────────────────────────────────────────────────────────────────
+# ColorTypes integration (MC-06 … MC-09, MC-29)
+# ─────────────────────────────────────────────────────────────────
+
+@testset "MC-06 ColorTypes conformance" begin
+    c = hct("#6750A4")
+    @test c isa ColorTypes.Color{Float64,3}
+    @test c isa ColorTypes.Colorant
+    # Component accessors come from field order
+    @test ColorTypes.comp1(c) === c.hue
+    @test ColorTypes.comp2(c) === c.chroma
+    @test ColorTypes.comp3(c) === c.tone
+    @test eltype(c) === Float64
+end
+
+@testset "MC-07 dispatches as a Colorant" begin
+    c = hct("#6750A4")
+    # A function typed on the abstract supertype must accept HCT with no
+    # explicit conversion by the caller.
+    takes_colorant(::ColorTypes.Colorant) = :colorant
+    takes_color(::ColorTypes.Color) = :color
+    @test takes_colorant(c) === :colorant
+    @test takes_color(c) === :color
+end
+
+@testset "MC-29 HCT is continuous, RGB is 8-bit" begin
+    c = hct("#6750A4")
+    # HCT keeps unrounded components
+    @test c.hue != round(c.hue)
+    @test c.tone != round(c.tone)
+
+    rgb = convert(RGB{Float64}, c)
+    @test rgb isa RGB{Float64}
+    # Every channel lands exactly on the 8-bit grid
+    for ch in (red(rgb), green(rgb), blue(rgb))
+        @test ch * 255 ≈ round(ch * 255) atol = 1e-9
+    end
+    # convert and to_hex can never disagree
+    @test to_hex(c) == "#" * uppercase(Colors.hex(rgb))
+end
+
+@testset "MC-03 RGB round-trip" begin
+    for hex in ("#6750A4", "#B3261E", "#006B5E", "#FFFFFF", "#000000")
+        c = hct(hex)
+        rgb = convert(RGB{Float64}, c)
+        @test to_hex(c) == hex
+        back = convert(HCT, rgb)
+        @test back.tone ≈ c.tone atol = 1.0
+        @test to_hex(back) == hex
+    end
+end
+
+@testset "MC-09 public functions accept Colorants" begin
+    target = hct("#6750A4")
+    rgb = convert(RGB{Float64}, target)
+
+    @test to_hex(hct(rgb)) == "#6750A4"
+    @test to_hex(rgb) == "#6750A4"
+
+    # Palettes and schemes seed from a Colorant just as from a hex string
+    @test tone_at(tonal_palette(rgb), 40) == tone_at(tonal_palette("#6750A4"), 40)
+    @test color_scheme(rgb)[:primary] == color_scheme("#6750A4")[:primary]
+
+    # Contrast helpers too
+    @test contrast_ratio(colorant"white", rgb) ≈ contrast_ratio("#FFFFFF", "#6750A4")
+    @test meets_aa(colorant"white", rgb) == meets_aa("#FFFFFF", "#6750A4")
+end
+
+@testset "MC-08 renders as a swatch" begin
+    c = hct("#6750A4")
+    # Colors.jl declares the SVG swatch on the abstract Color, so any
+    # subtype inherits it once the RGB conversion exists.
+    @test showable(MIME("image/svg+xml"), c)
+    svg = sprint(show, MIME("image/svg+xml"), c)
+    @test occursin("<svg", svg)
+    @test occursin("6750A4", uppercase(svg))
 end
 
 end
