@@ -28,6 +28,12 @@ jobs:
   docs:
     name: Documentation
     runs-on: ubuntu-latest
+    permissions:
+      # deploydocs pushes the built site to gh-pages using GITHUB_TOKEN, which
+      # is read-only by default. Without this the build succeeds and the push
+      # is refused with a 403.
+      contents: write
+      actions: write # lets julia-actions/cache clean up its own old caches
     steps:
       - uses: actions/checkout@v7
       - uses: julia-actions/setup-julia@v3
