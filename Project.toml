@@ -1,0 +1,10 @@
+name = "MaterialColors"
+uuid = "3927ea69-822a-40ab-97d4-2bc957378337"
+authors = ["Matt Helm <mthelm85@gmail.com>"]
+version = "0.1.0"
+
+[workspace]
+projects = ["test", "docs"]
+
+[compat]
+julia = "1.10"
