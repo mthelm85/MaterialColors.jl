@@ -1,5 +1,6 @@
 using MaterialColors
 using Documenter
+using MaterialDocs
 
 DocMeta.setdocmeta!(MaterialColors, :DocTestSetup, :(using MaterialColors); recursive = true)
 
@@ -63,7 +64,12 @@ makedocs(;
     authors = "Matt Helm <mthelm85@gmail.com>",
     repo = "https://github.com/mthelm85/MaterialColors.jl/blob/{commit}{path}#{line}",
     sitename = "MaterialColors.jl",
-    format = Documenter.HTML(; canonical = "https://mthelm85.github.io/MaterialColors.jl"),
+    # Documented with MaterialDocs, which is built on this package — the
+    # seed below is the MD3 baseline colour these docs describe.
+    format = Material3(
+        theme = ThemeConfig(seed = "#6750A4", name = "MaterialColors"),
+        dark_mode = :toggle,
+    ),
     pages = list_pages(),
 )
 
