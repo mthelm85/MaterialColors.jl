@@ -757,11 +757,11 @@ end
 """
     hct(c::Colorant) -> HCT
 
-Convert any colour from the ColorTypes ecosystem into HCT.
+Convert any color from the ColorTypes ecosystem into HCT.
 """
 hct(c::ColorTypes.Colorant)::HCT = _hct_from_srgb(_srgb_bytes(c)...)
 
-"""Normalise a colour argument to a hex string, passing `nothing` through."""
+"""Normalise a color argument to a hex string, passing `nothing` through."""
 _as_hex(s::AbstractString) = String(s)
 _as_hex(c::ColorTypes.Colorant) = to_hex(c)
 _as_hex(::Nothing) = nothing
@@ -810,7 +810,7 @@ end
 """
     to_hex(c::Colorant) -> String
 
-Format any colour from the ColorTypes ecosystem as an uppercase `#RRGGBB`.
+Format any color from the ColorTypes ecosystem as an uppercase `#RRGGBB`.
 """
 to_hex(c::ColorTypes.Colorant)::String = _to_hex_string(_srgb_bytes(c)...)
 

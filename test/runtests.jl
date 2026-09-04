@@ -101,7 +101,7 @@ end
     @test p.hue ≈ hct("#6750A4").hue
     @test p.chroma ≈ hct("#6750A4").chroma
 
-    # A palette yields colours, not strings — the continuous representation
+    # A palette yields colors, not strings — the continuous representation
     @test p[40] isa HCT
     @test p[40].tone == 40.0
 
@@ -169,7 +169,7 @@ end
         @test haskey(scheme, role) || "Missing role: $role"
     end
 
-    # Values are colours, not strings
+    # Values are colors, not strings
     for (role, c) in scheme
         @test c isa RGB{Float64}
     end
@@ -179,7 +179,7 @@ end
     hexes = hex_scheme("#6750A4")
     @test hexes isa Dict{Symbol,String}
 
-    # Same roles as color_scheme, same colours, formatted as CSS hex
+    # Same roles as color_scheme, same colors, formatted as CSS hex
     scheme = color_scheme("#6750A4")
     @test keys(hexes) == keys(scheme)
     for (role, c) in scheme

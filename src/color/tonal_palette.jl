@@ -65,7 +65,7 @@ end
 """
     getindex(p::TonalPalette, tone::Int) → HCT
 
-Look up the colour at the given tone (0–100). Results are cached.
+Look up the color at the given tone (0–100). Results are cached.
 
 Returns an `HCT`, the continuous representation, carrying the palette's hue and
 chroma at exactly the requested tone. Gamut mapping happens on conversion — use

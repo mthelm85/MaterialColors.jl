@@ -192,7 +192,7 @@ end
 # ─────────────────────────────────────────────────────────────────────────────
 # The generator works in hex because that is what the MD3 reference produces
 # and what the tests pin against. These are the Julia-facing forms: same roles,
-# same colours, handed back as Colorants so they compose with the ecosystem.
+# same colors, handed back as Colorants so they compose with the ecosystem.
 
 """Parse a `#RRGGBB` string into an RGB value on the 8-bit grid."""
 function _rgb_from_hex(hex::AbstractString)::ColorTypes.RGB{Float64}
@@ -206,7 +206,7 @@ _as_rgb_scheme(d::Dict{Symbol,String}) =
 """
     color_scheme(seed; dark=false, secondary=nothing, tertiary=nothing)
 
-Generate the 34 MD3 colour roles from `seed`, as `RGB{Float64}` values.
+Generate the 34 MD3 color roles from `seed`, as `RGB{Float64}` values.
 Use [`hex_scheme`](@ref) when you need CSS hex strings instead.
 """
 color_scheme(seed::AbstractString; kwargs...) = _as_rgb_scheme(hex_scheme(seed; kwargs...))

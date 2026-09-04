@@ -1,7 +1,7 @@
 #=
 Colorant interoperability.
 
-Every public entry point that takes a seed or a colour also accepts anything
+Every public entry point that takes a seed or a color also accepts anything
 from the ColorTypes ecosystem. These are thin forwarding methods: a Colorant is
 quantised to the 8-bit sRGB the engine works in, then handed to the hex-taking
 implementation. Kept in one file so the ported engine stays close to upstream.

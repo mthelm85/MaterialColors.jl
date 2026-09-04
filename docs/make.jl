@@ -68,7 +68,7 @@ makedocs(;
     # manual — see Private = false in the reference page.
     checkdocs = :exports,
     # Documented with MaterialDocs, which is built on this package — the
-    # seed below is the MD3 baseline colour these docs describe.
+    # seed below is the MD3 baseline color these docs describe.
     format = Material3(
         theme = ThemeConfig(seed = "#6750A4", name = "MaterialColors"),
         dark_mode = :toggle,

@@ -1,6 +1,6 @@
 # MaterialColors.jl
 
-**The HCT colour space and the Material Design 3 colour system, in pure Julia.**
+**The HCT color space and the Material Design 3 color system, in pure Julia.**
 
 [![Development documentation](https://img.shields.io/badge/docs-dev-blue.svg)](https://mthelm85.github.io/MaterialColors.jl/dev)
 [![Test workflow status](https://github.com/mthelm85/MaterialColors.jl/actions/workflows/Test.yml/badge.svg?branch=main)](https://github.com/mthelm85/MaterialColors.jl/actions/workflows/Test.yml?query=branch%3Amain)
@@ -11,15 +11,15 @@
 
 A Julia port of Google's
 [material-color-utilities](https://github.com/material-foundation/material-color-utilities):
-the CAM16 colour appearance model, the HCT colour space and its gamut-mapping
+the CAM16 color appearance model, the HCT color space and its gamut-mapping
 solver, tonal palettes, MD3 scheme generation, and WCAG contrast helpers.
 
-Give it one colour and it gives you a complete, accessible palette.
+Give it one color and it gives you a complete, accessible palette.
 
 ## Why HCT
 
 HCT pairs the hue and chroma of CAM16 with the lightness (`L*`) of CIELAB. The
-useful consequence is that **tone maps directly to contrast**: two colours a
+useful consequence is that **tone maps directly to contrast**: two colors a
 fixed distance apart in tone have a predictable contrast ratio regardless of
 hue. That is what makes it possible to generate a whole palette from a single
 seed and know in advance that the text on each surface will be readable.
@@ -87,7 +87,7 @@ hct(colorant"rebeccapurple")    # HCT from any Colorant
 color_scheme(colorant"teal")    # seeds accept Colorants too
 ```
 
-Environments that render colour swatches — Pluto, VS Code, IJulia — display
+Environments that render color swatches — Pluto, VS Code, IJulia — display
 `HCT` values as swatches rather than numbers.
 
 > [!NOTE]
@@ -99,14 +99,14 @@ Environments that render colour swatches — Pluto, VS Code, IJulia — display
 
 Deliberately out of scope: extracting a theme from an image, the MD3 dynamic
 scheme variants beyond the baseline (content, fidelity, vibrant, expressive),
-and perceptual colour-difference metrics — [Colors.jl](https://github.com/JuliaGraphics/Colors.jl)
+and perceptual color-difference metrics — [Colors.jl](https://github.com/JuliaGraphics/Colors.jl)
 already covers the last of those.
 
 ## Used by
 
 [MaterialDocs.jl](https://github.com/mthelm85/MaterialDocs.jl), a Documenter.jl
 writer that generates Material Design 3 documentation sites, uses this package
-to generate every colour token on a site from one seed.
+to generate every color token on a site from one seed.
 
 > [!NOTE]
 > MaterialDocs' live theme editor previously carried its own JavaScript port of

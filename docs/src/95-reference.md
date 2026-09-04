@@ -10,7 +10,7 @@ source but deliberately kept out of the manual.
 MaterialColors
 ```
 
-## Colour space
+## Color space
 
 ```@autodocs
 Modules = [MaterialColors]

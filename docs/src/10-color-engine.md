@@ -6,15 +6,15 @@ CurrentModule = MaterialColors
 
 MaterialColors is a pure-Julia port of Google's
 [material-color-utilities](https://github.com/material-foundation/material-color-utilities):
-the CAM16 appearance model, the HCT colour space, tonal palettes, Material
+the CAM16 appearance model, the HCT color space, tonal palettes, Material
 Design 3 scheme generation, and WCAG contrast helpers.
 
 ## HCT
 
-HCT combines the hue and chroma of the CAM16 colour appearance model with the
+HCT combines the hue and chroma of the CAM16 color appearance model with the
 lightness (`L*`) of CIELAB. Its value is that **tone maps directly to contrast**:
-two colours 40 tones apart have a predictable contrast ratio regardless of hue.
-That is what lets a whole palette be generated from one colour without
+two colors 40 tones apart have a predictable contrast ratio regardless of hue.
+That is what lets a whole palette be generated from one color without
 hand-tuning.
 
 ```jldoctest
@@ -28,8 +28,8 @@ julia> to_hex(c)
 ```
 
 Not every hue/chroma pair exists at every tone — the sRGB gamut narrows toward
-black and white. Requests outside it resolve to the closest in-gamut colour, so
-round-tripping a saturated colour at an extreme tone may not return the exact
+black and white. Requests outside it resolve to the closest in-gamut color, so
+round-tripping a saturated color at an extreme tone may not return the exact
 input.
 
 ## Working with the Colorant ecosystem
@@ -44,8 +44,8 @@ convert(RGB, hct("#6750A4"))     # RGB{Float64}(0.404, 0.314, 0.643)
 hct(colorant"rebeccapurple")     # HCT from any Colorant
 ```
 
-Every function that takes a seed or a colour accepts a `Colorant` in place of a
-hex string, and environments that render colour swatches — Pluto, VS Code,
+Every function that takes a seed or a color accepts a `Colorant` in place of a
+hex string, and environments that render color swatches — Pluto, VS Code,
 IJulia — display `HCT` values as swatches.
 
 !!! note "Continuous in HCT, 8-bit in sRGB"
@@ -72,7 +72,7 @@ fills the standard MD3 tone stops in one pass.
 
 ## Schemes
 
-[`color_scheme`](@ref) generates the 34 MD3 roles from a seed, as colours:
+[`color_scheme`](@ref) generates the 34 MD3 roles from a seed, as colors:
 
 ```julia
 light = color_scheme("#6750A4")
@@ -83,7 +83,7 @@ light[:on_primary_container]
 ```
 
 [`color_scheme_pair`](@ref) returns both at once. When you need CSS strings
-rather than colours, [`hex_scheme`](@ref) and [`hex_scheme_pair`](@ref) return
+rather than colors, [`hex_scheme`](@ref) and [`hex_scheme_pair`](@ref) return
 the same roles formatted as `#RRGGBB`.
 
 Roles are derived by fixed rules: secondary shares the seed hue at chroma 16,

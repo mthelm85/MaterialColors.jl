@@ -1,8 +1,8 @@
 """
     MaterialColors
 
-A pure-Julia implementation of the HCT colour space and the Material Design 3
-colour system: CAM16 appearance modelling, tonal palettes, scheme generation,
+A pure-Julia implementation of the HCT color space and the Material Design 3
+color system: CAM16 appearance modelling, tonal palettes, scheme generation,
 and WCAG contrast helpers.
 
 Ported from Google's material-color-utilities (Apache-2.0). See NOTICE.
@@ -13,7 +13,7 @@ using StaticArrays
 using ColorTypes
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Colour engine
+# Color engine
 # ─────────────────────────────────────────────────────────────────────────────
 
 include("color/hct.jl")
@@ -22,7 +22,7 @@ include("color/color_scheme.jl")
 include("color/contrast.jl")
 include("color/colorants.jl")
 
-# Colour space
+# Color space
 export HCT, hct, to_hex
 
 # Tonal palettes
