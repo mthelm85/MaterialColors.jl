@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>MaterialColors.jl — MaterialColors.jl</title>
-  <link rel="stylesheet" href="./assets/materialdocs.css?v=aef444c8">
+  <link rel="stylesheet" href="./assets/materialdocs.css?v=1cad9e67">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap">
   <script>
     (function(){
@@ -43,9 +43,9 @@
     <main class="md-content">
       <article class="md-article">
 <h1 id="MaterialColors.jl" class="md-heading">MaterialColors.jl<a href="#MaterialColors.jl" class="md-heading-anchor" aria-label="Link to this section">#</a></h1>
-<p><strong>The HCT colour space and the Material Design 3 colour system, in pure Julia.</strong></p>
-<p>A port of Google&#39;s <a href="https://github.com/material-foundation/material-color-utilities">material-color-utilities</a>: the CAM16 colour appearance model, the HCT colour space and its gamut-mapping solver, tonal palettes, MD3 scheme generation, and WCAG contrast helpers.</p>
-<p>Give it one colour and it gives you a complete, accessible palette.</p>
+<p><strong>The HCT color space and the Material Design 3 color system, in pure Julia.</strong></p>
+<p>A port of Google&#39;s <a href="https://github.com/material-foundation/material-color-utilities">material-color-utilities</a>: the CAM16 color appearance model, the HCT color space and its gamut-mapping solver, tonal palettes, MD3 scheme generation, and WCAG contrast helpers.</p>
+<p>Give it one color and it gives you a complete, accessible palette.</p>
 <div class="md-code-block">
 <button class="md-copy-btn" title="Copy to clipboard" aria-label="Copy code"><span class="md-copy-icon">⧉</span><span class="md-copy-feedback">Copied!</span></button>
 <pre><code class="language-julia">using MaterialColors
@@ -57,12 +57,12 @@ scheme[:on_primary_container]</code></pre>
 <div class="md-admonition md-admonition-tip">
 <p class="md-admonition-title">This site is its own demo</p>
 <div class="md-admonition-body">
-<p>These pages are rendered by <a href="https://github.com/mthelm85/MaterialDocs.jl">MaterialDocs.jl</a>, which is built on this package. Every colour you can see was generated from the seed <code class="md-code-inline">#6750A4</code> by the code documented here.</p>
+<p>These pages are rendered by <a href="https://github.com/mthelm85/MaterialDocs.jl">MaterialDocs.jl</a>, which is built on this package. Every color you can see was generated from the seed <code class="md-code-inline">#6750A4</code> by the code documented here.</p>
 </div>
 </div>
 <h2 id="Why-HCT" class="md-heading">Why HCT<a href="#Why-HCT" class="md-heading-anchor" aria-label="Link to this section">#</a></h2>
-<p>HCT pairs the hue and chroma of CAM16 with the lightness (<code class="md-code-inline">L*</code>) of CIELAB. The useful consequence is that <strong>tone maps directly to contrast</strong>: two colours a fixed distance apart in tone have a predictable contrast ratio regardless of hue.</p>
-<p>That is what makes it possible to generate a whole palette from a single seed and know in advance that the text on each surface will be readable — rather than picking colours and checking them afterwards.</p>
+<p>HCT pairs the hue and chroma of CAM16 with the lightness (<code class="md-code-inline">L*</code>) of CIELAB. The useful consequence is that <strong>tone maps directly to contrast</strong>: two colors a fixed distance apart in tone have a predictable contrast ratio regardless of hue.</p>
+<p>That is what makes it possible to generate a whole palette from a single seed and know in advance that the text on each surface will be readable — rather than picking colors and checking them afterwards.</p>
 <h2 id="Installation" class="md-heading">Installation<a href="#Installation" class="md-heading-anchor" aria-label="Link to this section">#</a></h2>
 <p>MaterialColors is not yet registered in the General registry, so add it by URL:</p>
 <div class="md-code-block">
@@ -82,7 +82,7 @@ Pkg.add(url = &quot;https://github.com/mthelm85/MaterialColors.jl.git&quot;)</co
 <tbody>
 <tr>
 <td style="text-align:right"><a href="./95-reference/#MaterialColors.hct-Tuple{AbstractString}"><code class="md-code-inline">hct</code></a>, <a href="./95-reference/#MaterialColors.to_hex-Tuple{ColorTypes.Colorant}"><code class="md-code-inline">to_hex</code></a></td>
-<td style="text-align:right">Convert to and from the HCT colour space</td>
+<td style="text-align:right">Convert to and from the HCT color space</td>
 </tr>
 <tr>
 <td style="text-align:right"><a href="./95-reference/#MaterialColors.tonal_palette-Tuple{AbstractString}"><code class="md-code-inline">tonal_palette</code></a>, <a href="./95-reference/#MaterialColors.tone_at-Tuple{TonalPalette, Int64}"><code class="md-code-inline">tone_at</code></a></td>
@@ -108,7 +108,7 @@ Pkg.add(url = &quot;https://github.com/mthelm85/MaterialColors.jl.git&quot;)</co
 </table>
 </div>
 <h2 id="Works-with-the-Colorant-ecosystem" class="md-heading">Works with the Colorant ecosystem<a href="#Works-with-the-Colorant-ecosystem" class="md-heading-anchor" aria-label="Link to this section">#</a></h2>
-<p><a href="./95-reference/#MaterialColors.HCT"><code class="md-code-inline">HCT</code></a> is a <code class="md-code-inline">ColorTypes.Color{Float64,3}</code>, so it converts to and from the RGB family and passes anywhere a <code class="md-code-inline">Colorant</code> is accepted — including into Makie themes, ColorSchemes.jl, and Plots. Environments that render colour swatches show <code class="md-code-inline">HCT</code> values as swatches rather than numbers.</p>
+<p><a href="./95-reference/#MaterialColors.HCT"><code class="md-code-inline">HCT</code></a> is a <code class="md-code-inline">ColorTypes.Color{Float64,3}</code>, so it converts to and from the RGB family and passes anywhere a <code class="md-code-inline">Colorant</code> is accepted — including into Makie themes, ColorSchemes.jl, and Plots. Environments that render color swatches show <code class="md-code-inline">HCT</code> values as swatches rather than numbers.</p>
 <h2 id="Where-to-go-next" class="md-heading">Where to go next<a href="#Where-to-go-next" class="md-heading-anchor" aria-label="Link to this section">#</a></h2>
 <ul class="md-list-tight">
 <li><p><a href="./10-color-engine/#Color-Engine">Color Engine</a> — the full guide, with worked examples</p>
@@ -141,6 +141,6 @@ Pkg.add(url = &quot;https://github.com/mthelm85/MaterialColors.jl.git&quot;)</co
   <script>hljs.highlightAll();</script>
   <script src="./siteinfo.js"></script>
   <script src="./../versions.js"></script>
-  <script src="./assets/materialdocs.js?v=aef444c8"></script>
+  <script src="./assets/materialdocs.js?v=1cad9e67"></script>
 </body>
 </html>

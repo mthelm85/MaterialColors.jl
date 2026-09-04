@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Reference — MaterialColors.jl</title>
-  <link rel="stylesheet" href="../assets/materialdocs.css?v=720076fb">
+  <link rel="stylesheet" href="../assets/materialdocs.css?v=452e142f">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap">
   <script>
     (function(){
@@ -48,22 +48,22 @@
 <div class="md-docstring" id="MaterialColors">
 <div class="md-docstring-header">
 <h4 class="md-docstring-binding"><code>MaterialColors</code></h4>
-<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/95ae3ab0db7249dbc347f1c3f3ba926bdeab655e/src/MaterialColors.jl#L1-L9" title="View source">source</a>
+<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/446546e3fdad765305c1e2c2c86332e545f01fbd/src/MaterialColors.jl#L1-L9" title="View source">source</a>
 </div>
 <div class="md-docstring-content">
 <div class="md-code-block">
 <button class="md-copy-btn" title="Copy to clipboard" aria-label="Copy code"><span class="md-copy-icon">⧉</span><span class="md-copy-feedback">Copied!</span></button>
 <pre><code class="language-julia">MaterialColors</code></pre>
 </div>
-<p>A pure-Julia implementation of the HCT colour space and the Material Design 3 colour system: CAM16 appearance modelling, tonal palettes, scheme generation, and WCAG contrast helpers.</p>
+<p>A pure-Julia implementation of the HCT color space and the Material Design 3 color system: CAM16 appearance modelling, tonal palettes, scheme generation, and WCAG contrast helpers.</p>
 <p>Ported from Google&#39;s material-color-utilities (Apache-2.0). See NOTICE.</p>
 </div>
 </div>
-<h2 id="Colour-space" class="md-heading">Colour space<a href="#Colour-space" class="md-heading-anchor" aria-label="Link to this section">#</a></h2>
+<h2 id="Color-space" class="md-heading">Color space<a href="#Color-space" class="md-heading-anchor" aria-label="Link to this section">#</a></h2>
 <div class="md-docstring" id="MaterialColors.HCT">
 <div class="md-docstring-header">
 <h4 class="md-docstring-binding"><code>MaterialColors.HCT</code></h4>
-<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/95ae3ab0db7249dbc347f1c3f3ba926bdeab655e/src/color/hct.jl#L24-L33" title="View source">source</a>
+<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/446546e3fdad765305c1e2c2c86332e545f01fbd/src/color/hct.jl#L24-L33" title="View source">source</a>
 </div>
 <div class="md-docstring-content">
 <div class="md-code-block">
@@ -85,7 +85,7 @@
 <div class="md-docstring" id="MaterialColors.HCT-Tuple{Real, Real, Real}">
 <div class="md-docstring-header">
 <h4 class="md-docstring-binding"><code>MaterialColors.HCT</code> — <span class="md-docstring-sig">Tuple{Real, Real, Real}</span></h4>
-<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/95ae3ab0db7249dbc347f1c3f3ba926bdeab655e/src/color/hct.jl#L784-L789" title="View source">source</a>
+<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/446546e3fdad765305c1e2c2c86332e545f01fbd/src/color/hct.jl#L784-L789" title="View source">source</a>
 </div>
 <div class="md-docstring-content">
 <div class="md-code-block">
@@ -98,7 +98,7 @@
 <div class="md-docstring" id="MaterialColors.hct-Tuple{AbstractString}">
 <div class="md-docstring-header">
 <h4 class="md-docstring-binding"><code>MaterialColors.hct</code> — <span class="md-docstring-sig">Tuple{AbstractString}</span></h4>
-<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/95ae3ab0db7249dbc347f1c3f3ba926bdeab655e/src/color/hct.jl#L726-L736" title="View source">source</a>
+<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/446546e3fdad765305c1e2c2c86332e545f01fbd/src/color/hct.jl#L726-L736" title="View source">source</a>
 </div>
 <div class="md-docstring-content">
 <div class="md-code-block">
@@ -117,33 +117,33 @@
 <div class="md-docstring" id="MaterialColors.hct-Tuple{ColorTypes.Colorant}">
 <div class="md-docstring-header">
 <h4 class="md-docstring-binding"><code>MaterialColors.hct</code> — <span class="md-docstring-sig">Tuple{ColorTypes.Colorant}</span></h4>
-<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/95ae3ab0db7249dbc347f1c3f3ba926bdeab655e/src/color/hct.jl#L757-L761" title="View source">source</a>
+<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/446546e3fdad765305c1e2c2c86332e545f01fbd/src/color/hct.jl#L757-L761" title="View source">source</a>
 </div>
 <div class="md-docstring-content">
 <div class="md-code-block">
 <button class="md-copy-btn" title="Copy to clipboard" aria-label="Copy code"><span class="md-copy-icon">⧉</span><span class="md-copy-feedback">Copied!</span></button>
 <pre><code class="language-julia">hct(c::Colorant) -&gt; HCT</code></pre>
 </div>
-<p>Convert any colour from the ColorTypes ecosystem into HCT.</p>
+<p>Convert any color from the ColorTypes ecosystem into HCT.</p>
 </div>
 </div>
 <div class="md-docstring" id="MaterialColors.to_hex-Tuple{ColorTypes.Colorant}">
 <div class="md-docstring-header">
 <h4 class="md-docstring-binding"><code>MaterialColors.to_hex</code> — <span class="md-docstring-sig">Tuple{ColorTypes.Colorant}</span></h4>
-<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/95ae3ab0db7249dbc347f1c3f3ba926bdeab655e/src/color/hct.jl#L810-L814" title="View source">source</a>
+<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/446546e3fdad765305c1e2c2c86332e545f01fbd/src/color/hct.jl#L810-L814" title="View source">source</a>
 </div>
 <div class="md-docstring-content">
 <div class="md-code-block">
 <button class="md-copy-btn" title="Copy to clipboard" aria-label="Copy code"><span class="md-copy-icon">⧉</span><span class="md-copy-feedback">Copied!</span></button>
 <pre><code class="language-julia">to_hex(c::Colorant) -&gt; String</code></pre>
 </div>
-<p>Format any colour from the ColorTypes ecosystem as an uppercase <code class="md-code-inline">#RRGGBB</code>.</p>
+<p>Format any color from the ColorTypes ecosystem as an uppercase <code class="md-code-inline">#RRGGBB</code>.</p>
 </div>
 </div>
 <div class="md-docstring" id="MaterialColors.to_hex-Tuple{HCT}">
 <div class="md-docstring-header">
 <h4 class="md-docstring-binding"><code>MaterialColors.to_hex</code> — <span class="md-docstring-sig">Tuple{HCT}</span></h4>
-<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/95ae3ab0db7249dbc347f1c3f3ba926bdeab655e/src/color/hct.jl#L793-L804" title="View source">source</a>
+<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/446546e3fdad765305c1e2c2c86332e545f01fbd/src/color/hct.jl#L793-L804" title="View source">source</a>
 </div>
 <div class="md-docstring-content">
 <div class="md-code-block">
@@ -162,7 +162,7 @@
 <div class="md-docstring" id="MaterialColors.TonalPalette">
 <div class="md-docstring-header">
 <h4 class="md-docstring-binding"><code>MaterialColors.TonalPalette</code></h4>
-<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/95ae3ab0db7249dbc347f1c3f3ba926bdeab655e/src/color/tonal_palette.jl#L14-L32" title="View source">source</a>
+<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/446546e3fdad765305c1e2c2c86332e545f01fbd/src/color/tonal_palette.jl#L14-L32" title="View source">source</a>
 </div>
 <div class="md-docstring-content">
 <div class="md-code-block">
@@ -192,7 +192,7 @@ p[10]   # a much darker version</code></pre>
 <div class="md-docstring" id="MaterialColors.TonalPalette-Tuple{Real, Real}">
 <div class="md-docstring-header">
 <h4 class="md-docstring-binding"><code>MaterialColors.TonalPalette</code> — <span class="md-docstring-sig">Tuple{Real, Real}</span></h4>
-<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/95ae3ab0db7249dbc347f1c3f3ba926bdeab655e/src/color/tonal_palette.jl#L39-L43" title="View source">source</a>
+<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/446546e3fdad765305c1e2c2c86332e545f01fbd/src/color/tonal_palette.jl#L39-L43" title="View source">source</a>
 </div>
 <div class="md-docstring-content">
 <div class="md-code-block">
@@ -205,7 +205,7 @@ p[10]   # a much darker version</code></pre>
 <div class="md-docstring" id="MaterialColors.precompute!-Tuple{TonalPalette}">
 <div class="md-docstring-header">
 <h4 class="md-docstring-binding"><code>MaterialColors.precompute!</code> — <span class="md-docstring-sig">Tuple{TonalPalette}</span></h4>
-<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/95ae3ab0db7249dbc347f1c3f3ba926bdeab655e/src/color/tonal_palette.jl#L101-L105" title="View source">source</a>
+<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/446546e3fdad765305c1e2c2c86332e545f01fbd/src/color/tonal_palette.jl#L101-L105" title="View source">source</a>
 </div>
 <div class="md-docstring-content">
 <div class="md-code-block">
@@ -218,7 +218,7 @@ p[10]   # a much darker version</code></pre>
 <div class="md-docstring" id="MaterialColors.tonal_palette-Tuple{AbstractString}">
 <div class="md-docstring-header">
 <h4 class="md-docstring-binding"><code>MaterialColors.tonal_palette</code> — <span class="md-docstring-sig">Tuple{AbstractString}</span></h4>
-<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/95ae3ab0db7249dbc347f1c3f3ba926bdeab655e/src/color/tonal_palette.jl#L47-L59" title="View source">source</a>
+<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/446546e3fdad765305c1e2c2c86332e545f01fbd/src/color/tonal_palette.jl#L47-L59" title="View source">source</a>
 </div>
 <div class="md-docstring-content">
 <div class="md-code-block">
@@ -238,7 +238,7 @@ p[90]  # light container color</code></pre>
 <div class="md-docstring" id="MaterialColors.tone_at-Tuple{TonalPalette, Int64}">
 <div class="md-docstring-header">
 <h4 class="md-docstring-binding"><code>MaterialColors.tone_at</code> — <span class="md-docstring-sig">Tuple{TonalPalette, Int64}</span></h4>
-<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/95ae3ab0db7249dbc347f1c3f3ba926bdeab655e/src/color/tonal_palette.jl#L80-L84" title="View source">source</a>
+<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/446546e3fdad765305c1e2c2c86332e545f01fbd/src/color/tonal_palette.jl#L80-L84" title="View source">source</a>
 </div>
 <div class="md-docstring-content">
 <div class="md-code-block">
@@ -252,20 +252,20 @@ p[90]  # light container color</code></pre>
 <div class="md-docstring" id="MaterialColors.color_scheme-Tuple{AbstractString}">
 <div class="md-docstring-header">
 <h4 class="md-docstring-binding"><code>MaterialColors.color_scheme</code> — <span class="md-docstring-sig">Tuple{AbstractString}</span></h4>
-<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/95ae3ab0db7249dbc347f1c3f3ba926bdeab655e/src/color/color_scheme.jl#L206-L211" title="View source">source</a>
+<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/446546e3fdad765305c1e2c2c86332e545f01fbd/src/color/color_scheme.jl#L206-L211" title="View source">source</a>
 </div>
 <div class="md-docstring-content">
 <div class="md-code-block">
 <button class="md-copy-btn" title="Copy to clipboard" aria-label="Copy code"><span class="md-copy-icon">⧉</span><span class="md-copy-feedback">Copied!</span></button>
 <pre><code class="language-julia">color_scheme(seed; dark=false, secondary=nothing, tertiary=nothing)</code></pre>
 </div>
-<p>Generate the 34 MD3 colour roles from <code class="md-code-inline">seed</code>, as <code class="md-code-inline">RGB{Float64}</code> values. Use <a href="../95-reference/#MaterialColors.hex_scheme-Tuple{AbstractString}"><code class="md-code-inline">hex_scheme</code></a> when you need CSS hex strings instead.</p>
+<p>Generate the 34 MD3 color roles from <code class="md-code-inline">seed</code>, as <code class="md-code-inline">RGB{Float64}</code> values. Use <a href="../95-reference/#MaterialColors.hex_scheme-Tuple{AbstractString}"><code class="md-code-inline">hex_scheme</code></a> when you need CSS hex strings instead.</p>
 </div>
 </div>
 <div class="md-docstring" id="MaterialColors.color_scheme_pair-Tuple{AbstractString}">
 <div class="md-docstring-header">
 <h4 class="md-docstring-binding"><code>MaterialColors.color_scheme_pair</code> — <span class="md-docstring-sig">Tuple{AbstractString}</span></h4>
-<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/95ae3ab0db7249dbc347f1c3f3ba926bdeab655e/src/color/color_scheme.jl#L214-L218" title="View source">source</a>
+<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/446546e3fdad765305c1e2c2c86332e545f01fbd/src/color/color_scheme.jl#L214-L218" title="View source">source</a>
 </div>
 <div class="md-docstring-content">
 <div class="md-code-block">
@@ -278,7 +278,7 @@ p[90]  # light container color</code></pre>
 <div class="md-docstring" id="MaterialColors.hex_scheme-Tuple{AbstractString}">
 <div class="md-docstring-header">
 <h4 class="md-docstring-binding"><code>MaterialColors.hex_scheme</code> — <span class="md-docstring-sig">Tuple{AbstractString}</span></h4>
-<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/95ae3ab0db7249dbc347f1c3f3ba926bdeab655e/src/color/color_scheme.jl#L99-L128" title="View source">source</a>
+<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/446546e3fdad765305c1e2c2c86332e545f01fbd/src/color/color_scheme.jl#L99-L128" title="View source">source</a>
 </div>
 <div class="md-docstring-content">
 <div class="md-code-block">
@@ -317,7 +317,7 @@ dark_scheme[:primary]       # &quot;#D0BCFF&quot; (lighter for dark backgrounds)
 <div class="md-docstring" id="MaterialColors.hex_scheme_pair-Tuple{AbstractString}">
 <div class="md-docstring-header">
 <h4 class="md-docstring-binding"><code>MaterialColors.hex_scheme_pair</code> — <span class="md-docstring-sig">Tuple{AbstractString}</span></h4>
-<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/95ae3ab0db7249dbc347f1c3f3ba926bdeab655e/src/color/color_scheme.jl#L174-L180" title="View source">source</a>
+<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/446546e3fdad765305c1e2c2c86332e545f01fbd/src/color/color_scheme.jl#L174-L180" title="View source">source</a>
 </div>
 <div class="md-docstring-content">
 <div class="md-code-block">
@@ -332,7 +332,7 @@ dark_scheme[:primary]       # &quot;#D0BCFF&quot; (lighter for dark backgrounds)
 <div class="md-docstring" id="MaterialColors.contrast_ratio-Tuple{AbstractString, AbstractString}">
 <div class="md-docstring-header">
 <h4 class="md-docstring-binding"><code>MaterialColors.contrast_ratio</code> — <span class="md-docstring-sig">Tuple{AbstractString, AbstractString}</span></h4>
-<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/95ae3ab0db7249dbc347f1c3f3ba926bdeab655e/src/color/contrast.jl#L8-L20" title="View source">source</a>
+<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/446546e3fdad765305c1e2c2c86332e545f01fbd/src/color/contrast.jl#L8-L20" title="View source">source</a>
 </div>
 <div class="md-docstring-content">
 <div class="md-code-block">
@@ -351,7 +351,7 @@ contrast_ratio(&quot;#6750A4&quot;, &quot;#FFFFFF&quot;)  # ≈ 5.3</code></pre>
 <div class="md-docstring" id="MaterialColors.contrast_ratio-Tuple{Float64, Float64}">
 <div class="md-docstring-header">
 <h4 class="md-docstring-binding"><code>MaterialColors.contrast_ratio</code> — <span class="md-docstring-sig">Tuple{Float64, Float64}</span></h4>
-<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/95ae3ab0db7249dbc347f1c3f3ba926bdeab655e/src/color/contrast.jl#L29-L34" title="View source">source</a>
+<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/446546e3fdad765305c1e2c2c86332e545f01fbd/src/color/contrast.jl#L29-L34" title="View source">source</a>
 </div>
 <div class="md-docstring-content">
 <div class="md-code-block">
@@ -364,7 +364,7 @@ contrast_ratio(&quot;#6750A4&quot;, &quot;#FFFFFF&quot;)  # ≈ 5.3</code></pre>
 <div class="md-docstring" id="MaterialColors.darker_tone-Tuple{Float64, Float64}">
 <div class="md-docstring-header">
 <h4 class="md-docstring-binding"><code>MaterialColors.darker_tone</code> — <span class="md-docstring-sig">Tuple{Float64, Float64}</span></h4>
-<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/95ae3ab0db7249dbc347f1c3f3ba926bdeab655e/src/color/contrast.jl#L83-L88" title="View source">source</a>
+<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/446546e3fdad765305c1e2c2c86332e545f01fbd/src/color/contrast.jl#L83-L88" title="View source">source</a>
 </div>
 <div class="md-docstring-content">
 <div class="md-code-block">
@@ -377,7 +377,7 @@ contrast_ratio(&quot;#6750A4&quot;, &quot;#FFFFFF&quot;)  # ≈ 5.3</code></pre>
 <div class="md-docstring" id="MaterialColors.lighter_tone-Tuple{Float64, Float64}">
 <div class="md-docstring-header">
 <h4 class="md-docstring-binding"><code>MaterialColors.lighter_tone</code> — <span class="md-docstring-sig">Tuple{Float64, Float64}</span></h4>
-<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/95ae3ab0db7249dbc347f1c3f3ba926bdeab655e/src/color/contrast.jl#L69-L74" title="View source">source</a>
+<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/446546e3fdad765305c1e2c2c86332e545f01fbd/src/color/contrast.jl#L69-L74" title="View source">source</a>
 </div>
 <div class="md-docstring-content">
 <div class="md-code-block">
@@ -390,7 +390,7 @@ contrast_ratio(&quot;#6750A4&quot;, &quot;#FFFFFF&quot;)  # ≈ 5.3</code></pre>
 <div class="md-docstring" id="MaterialColors.meets_aa-Tuple{AbstractString, AbstractString}">
 <div class="md-docstring-header">
 <h4 class="md-docstring-binding"><code>MaterialColors.meets_aa</code> — <span class="md-docstring-sig">Tuple{AbstractString, AbstractString}</span></h4>
-<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/95ae3ab0db7249dbc347f1c3f3ba926bdeab655e/src/color/contrast.jl#L43-L49" title="View source">source</a>
+<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/446546e3fdad765305c1e2c2c86332e545f01fbd/src/color/contrast.jl#L43-L49" title="View source">source</a>
 </div>
 <div class="md-docstring-content">
 <div class="md-code-block">
@@ -404,7 +404,7 @@ contrast_ratio(&quot;#6750A4&quot;, &quot;#FFFFFF&quot;)  # ≈ 5.3</code></pre>
 <div class="md-docstring" id="MaterialColors.meets_aaa-Tuple{AbstractString, AbstractString}">
 <div class="md-docstring-header">
 <h4 class="md-docstring-binding"><code>MaterialColors.meets_aaa</code> — <span class="md-docstring-sig">Tuple{AbstractString, AbstractString}</span></h4>
-<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/95ae3ab0db7249dbc347f1c3f3ba926bdeab655e/src/color/contrast.jl#L56-L62" title="View source">source</a>
+<a class="md-docstring-source" href="https://github.com/mthelm85/MaterialColors.jl/blob/446546e3fdad765305c1e2c2c86332e545f01fbd/src/color/contrast.jl#L56-L62" title="View source">source</a>
 </div>
 <div class="md-docstring-content">
 <div class="md-code-block">
@@ -418,6 +418,28 @@ contrast_ratio(&quot;#6750A4&quot;, &quot;#FFFFFF&quot;)  # ≈ 5.3</code></pre>
 <h2 id="Index" class="md-heading">Index<a href="#Index" class="md-heading-anchor" aria-label="Link to this section">#</a></h2>
 <div class="md-index">
 <ul>
+<li><a href="#MaterialColors"><code>MaterialColors</code></a></li>
+<li><a href="#MaterialColors.HCT-Tuple{Real, Real, Real}"><code>MaterialColors.HCT</code></a></li>
+<li><a href="#MaterialColors.HCT"><code>MaterialColors.HCT</code></a></li>
+<li><a href="#MaterialColors.TonalPalette"><code>MaterialColors.TonalPalette</code></a></li>
+<li><a href="#MaterialColors.TonalPalette-Tuple{Real, Real}"><code>MaterialColors.TonalPalette</code></a></li>
+<li><a href="#MaterialColors.color_scheme-Tuple{AbstractString}"><code>MaterialColors.color_scheme</code></a></li>
+<li><a href="#MaterialColors.color_scheme_pair-Tuple{AbstractString}"><code>MaterialColors.color_scheme_pair</code></a></li>
+<li><a href="#MaterialColors.contrast_ratio-Tuple{AbstractString, AbstractString}"><code>MaterialColors.contrast_ratio</code></a></li>
+<li><a href="#MaterialColors.contrast_ratio-Tuple{Float64, Float64}"><code>MaterialColors.contrast_ratio</code></a></li>
+<li><a href="#MaterialColors.darker_tone-Tuple{Float64, Float64}"><code>MaterialColors.darker_tone</code></a></li>
+<li><a href="#MaterialColors.hct-Tuple{ColorTypes.Colorant}"><code>MaterialColors.hct</code></a></li>
+<li><a href="#MaterialColors.hct-Tuple{AbstractString}"><code>MaterialColors.hct</code></a></li>
+<li><a href="#MaterialColors.hex_scheme-Tuple{AbstractString}"><code>MaterialColors.hex_scheme</code></a></li>
+<li><a href="#MaterialColors.hex_scheme_pair-Tuple{AbstractString}"><code>MaterialColors.hex_scheme_pair</code></a></li>
+<li><a href="#MaterialColors.lighter_tone-Tuple{Float64, Float64}"><code>MaterialColors.lighter_tone</code></a></li>
+<li><a href="#MaterialColors.meets_aa-Tuple{AbstractString, AbstractString}"><code>MaterialColors.meets_aa</code></a></li>
+<li><a href="#MaterialColors.meets_aaa-Tuple{AbstractString, AbstractString}"><code>MaterialColors.meets_aaa</code></a></li>
+<li><a href="#MaterialColors.precompute!-Tuple{TonalPalette}"><code>MaterialColors.precompute!</code></a></li>
+<li><a href="#MaterialColors.to_hex-Tuple{HCT}"><code>MaterialColors.to_hex</code></a></li>
+<li><a href="#MaterialColors.to_hex-Tuple{ColorTypes.Colorant}"><code>MaterialColors.to_hex</code></a></li>
+<li><a href="#MaterialColors.tonal_palette-Tuple{AbstractString}"><code>MaterialColors.tonal_palette</code></a></li>
+<li><a href="#MaterialColors.tone_at-Tuple{TonalPalette, Int64}"><code>MaterialColors.tone_at</code></a></li>
 </ul>
 </div>
       </article>
@@ -429,7 +451,7 @@ contrast_ratio(&quot;#6750A4&quot;, &quot;#FFFFFF&quot;)  # ≈ 5.3</code></pre>
       <div class="md-toc-inner">
         <p class="md-toc-title">On this page</p>
           <a class="md-toc-link md-toc-h2" href="#Module">Module</a>
-          <a class="md-toc-link md-toc-h2" href="#Colour-space">Colour space</a>
+          <a class="md-toc-link md-toc-h2" href="#Color-space">Color space</a>
           <a class="md-toc-link md-toc-h2" href="#Tonal-palettes">Tonal palettes</a>
           <a class="md-toc-link md-toc-h2" href="#Schemes">Schemes</a>
           <a class="md-toc-link md-toc-h2" href="#Contrast">Contrast</a>
@@ -443,6 +465,6 @@ contrast_ratio(&quot;#6750A4&quot;, &quot;#FFFFFF&quot;)  # ≈ 5.3</code></pre>
   <script>hljs.highlightAll();</script>
   <script src="../siteinfo.js"></script>
   <script src="../../versions.js"></script>
-  <script src="../assets/materialdocs.js?v=720076fb"></script>
+  <script src="../assets/materialdocs.js?v=452e142f"></script>
 </body>
 </html>

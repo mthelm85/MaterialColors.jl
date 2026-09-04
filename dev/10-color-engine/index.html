@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Color Engine — MaterialColors.jl</title>
-  <link rel="stylesheet" href="../assets/materialdocs.css?v=3a3e9d7f">
+  <link rel="stylesheet" href="../assets/materialdocs.css?v=91c4200c">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap">
   <script>
     (function(){
@@ -43,9 +43,9 @@
     <main class="md-content">
       <article class="md-article">
 <h1 id="Color-Engine" class="md-heading">Color Engine<a href="#Color-Engine" class="md-heading-anchor" aria-label="Link to this section">#</a></h1>
-<p>MaterialColors is a pure-Julia port of Google&#39;s <a href="https://github.com/material-foundation/material-color-utilities">material-color-utilities</a>: the CAM16 appearance model, the HCT colour space, tonal palettes, Material Design 3 scheme generation, and WCAG contrast helpers.</p>
+<p>MaterialColors is a pure-Julia port of Google&#39;s <a href="https://github.com/material-foundation/material-color-utilities">material-color-utilities</a>: the CAM16 appearance model, the HCT color space, tonal palettes, Material Design 3 scheme generation, and WCAG contrast helpers.</p>
 <h2 id="HCT" class="md-heading">HCT<a href="#HCT" class="md-heading-anchor" aria-label="Link to this section">#</a></h2>
-<p>HCT combines the hue and chroma of the CAM16 colour appearance model with the lightness (<code class="md-code-inline">L*</code>) of CIELAB. Its value is that <strong>tone maps directly to contrast</strong>: two colours 40 tones apart have a predictable contrast ratio regardless of hue. That is what lets a whole palette be generated from one colour without hand-tuning.</p>
+<p>HCT combines the hue and chroma of the CAM16 color appearance model with the lightness (<code class="md-code-inline">L*</code>) of CIELAB. Its value is that <strong>tone maps directly to contrast</strong>: two colors 40 tones apart have a predictable contrast ratio regardless of hue. That is what lets a whole palette be generated from one color without hand-tuning.</p>
 <div class="md-code-block">
 <button class="md-copy-btn" title="Copy to clipboard" aria-label="Copy code"><span class="md-copy-icon">⧉</span><span class="md-copy-feedback">Copied!</span></button>
 <pre><code class="language-julia-repl">julia&gt; using MaterialColors
@@ -56,7 +56,7 @@ HCT(hue=299.0, chroma=48.2, tone=40.1)
 julia&gt; to_hex(c)
 &quot;#6750A4&quot;</code></pre>
 </div>
-<p>Not every hue/chroma pair exists at every tone — the sRGB gamut narrows toward black and white. Requests outside it resolve to the closest in-gamut colour, so round-tripping a saturated colour at an extreme tone may not return the exact input.</p>
+<p>Not every hue/chroma pair exists at every tone — the sRGB gamut narrows toward black and white. Requests outside it resolve to the closest in-gamut color, so round-tripping a saturated color at an extreme tone may not return the exact input.</p>
 <h2 id="Working-with-the-Colorant-ecosystem" class="md-heading">Working with the Colorant ecosystem<a href="#Working-with-the-Colorant-ecosystem" class="md-heading-anchor" aria-label="Link to this section">#</a></h2>
 <p><code class="md-code-inline">HCT</code> is a <code class="md-code-inline">ColorTypes.Color{Float64,3}</code>, so it dispatches anywhere a <code class="md-code-inline">Colorant</code> is accepted and converts to and from the RGB family:</p>
 <div class="md-code-block">
@@ -66,7 +66,7 @@ julia&gt; to_hex(c)
 convert(RGB, hct(&quot;#6750A4&quot;))     # RGB{Float64}(0.404, 0.314, 0.643)
 hct(colorant&quot;rebeccapurple&quot;)     # HCT from any Colorant</code></pre>
 </div>
-<p>Every function that takes a seed or a colour accepts a <code class="md-code-inline">Colorant</code> in place of a hex string, and environments that render colour swatches — Pluto, VS Code, IJulia — display <code class="md-code-inline">HCT</code> values as swatches.</p>
+<p>Every function that takes a seed or a color accepts a <code class="md-code-inline">Colorant</code> in place of a hex string, and environments that render color swatches — Pluto, VS Code, IJulia — display <code class="md-code-inline">HCT</code> values as swatches.</p>
 <div class="md-admonition md-admonition-note">
 <p class="md-admonition-title">Continuous in HCT, 8-bit in sRGB</p>
 <div class="md-admonition-body">
@@ -84,7 +84,7 @@ p[90]                    # indexing is an alias for tone_at</code></pre>
 </div>
 <p>A palette returns <code class="md-code-inline">HCT</code> values, carrying its hue and chroma at exactly the tone you asked for; gamut mapping happens when you convert with <code class="md-code-inline">to_hex</code> or <code class="md-code-inline">convert(RGB, …)</code>. Tones are cached as requested, and <a href="../95-reference/#MaterialColors.precompute!-Tuple{TonalPalette}"><code class="md-code-inline">precompute!</code></a> fills the standard MD3 tone stops in one pass.</p>
 <h2 id="Schemes" class="md-heading">Schemes<a href="#Schemes" class="md-heading-anchor" aria-label="Link to this section">#</a></h2>
-<p><a href="../95-reference/#MaterialColors.color_scheme-Tuple{AbstractString}"><code class="md-code-inline">color_scheme</code></a> generates the 34 MD3 roles from a seed, as colours:</p>
+<p><a href="../95-reference/#MaterialColors.color_scheme-Tuple{AbstractString}"><code class="md-code-inline">color_scheme</code></a> generates the 34 MD3 roles from a seed, as colors:</p>
 <div class="md-code-block">
 <button class="md-copy-btn" title="Copy to clipboard" aria-label="Copy code"><span class="md-copy-icon">⧉</span><span class="md-copy-feedback">Copied!</span></button>
 <pre><code class="language-julia">light = color_scheme(&quot;#6750A4&quot;)
@@ -93,7 +93,7 @@ dark  = color_scheme(&quot;#6750A4&quot;; dark = true)
 light[:primary]              # RGB{Float64}
 light[:on_primary_container]</code></pre>
 </div>
-<p><a href="../95-reference/#MaterialColors.color_scheme_pair-Tuple{AbstractString}"><code class="md-code-inline">color_scheme_pair</code></a> returns both at once. When you need CSS strings rather than colours, <a href="../95-reference/#MaterialColors.hex_scheme-Tuple{AbstractString}"><code class="md-code-inline">hex_scheme</code></a> and <a href="../95-reference/#MaterialColors.hex_scheme_pair-Tuple{AbstractString}"><code class="md-code-inline">hex_scheme_pair</code></a> return the same roles formatted as <code class="md-code-inline">#RRGGBB</code>.</p>
+<p><a href="../95-reference/#MaterialColors.color_scheme_pair-Tuple{AbstractString}"><code class="md-code-inline">color_scheme_pair</code></a> returns both at once. When you need CSS strings rather than colors, <a href="../95-reference/#MaterialColors.hex_scheme-Tuple{AbstractString}"><code class="md-code-inline">hex_scheme</code></a> and <a href="../95-reference/#MaterialColors.hex_scheme_pair-Tuple{AbstractString}"><code class="md-code-inline">hex_scheme_pair</code></a> return the same roles formatted as <code class="md-code-inline">#RRGGBB</code>.</p>
 <p>Roles are derived by fixed rules: secondary shares the seed hue at chroma 16, tertiary rotates 60° at chroma 24, neutrals hold the seed hue at very low chroma, and error is a fixed red. Each role then sits at the tone the MD3 spec assigns it for that mode.</p>
 <h2 id="Contrast" class="md-heading">Contrast<a href="#Contrast" class="md-heading-anchor" aria-label="Link to this section">#</a></h2>
 <div class="md-code-block">
@@ -135,6 +135,6 @@ isnan(t) &amp;&amp; error(&quot;no tone meets that contrast&quot;)</code></pre>
   <script>hljs.highlightAll();</script>
   <script src="../siteinfo.js"></script>
   <script src="../../versions.js"></script>
-  <script src="../assets/materialdocs.js?v=3a3e9d7f"></script>
+  <script src="../assets/materialdocs.js?v=91c4200c"></script>
 </body>
 </html>
