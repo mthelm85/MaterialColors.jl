@@ -64,6 +64,9 @@ makedocs(;
     authors = "Matt Helm <mthelm85@gmail.com>",
     repo = "https://github.com/mthelm85/MaterialColors.jl/blob/{commit}{path}#{line}",
     sitename = "MaterialColors.jl",
+    # The port's internals are documented but deliberately absent from the
+    # manual — see Private = false in the reference page.
+    checkdocs = :exports,
     # Documented with MaterialDocs, which is built on this package — the
     # seed below is the MD3 baseline colour these docs describe.
     format = Material3(
